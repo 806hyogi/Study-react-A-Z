@@ -1,19 +1,13 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /*아래 폰트*/
 
 @font-face {
   font-family: "dailyfont";
   src: url("./fonts/KCC-Chassam.ttf");
 }
-.container {
-  margin: auto;
-  max-width: 600px;
-}
 
-.todoBlock {
-  padding: 30px;
-  margin-top: 50px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: -9px 17px 13px rgb(0 0 0 / 16%);
+.btn:active {
+  opacity: 0.5;
 }
