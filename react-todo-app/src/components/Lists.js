@@ -4,7 +4,7 @@ import React from 'react'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import List from "./List";
 
-const Lists = React.memo(({ todoData, setTodoData, handleClick}) => {
+const Lists = React.memo(({ todoData, setTodoData, handleClick }) => {
   // 순차적으로 데이터 적용
   const handleEnd = (result) => {
     // result 매개변수에는 source 항목 및 대상 위치와 같은 드레그 이벤트에 대한 정보가 포함
@@ -17,7 +17,7 @@ const Lists = React.memo(({ todoData, setTodoData, handleClick}) => {
     const newTodoData = [...todoData];
 
     // 1. 변경시키는 아이템을 배열에서 지워준다.
-    // 2. return 값으로 지워진 아이템을 잡아준다.
+    // 2. return 값으로 지워진 아이템을 잡아준다. (위치 변경 가능하도록 함)
     const [reorderedItem] = newTodoData.splice(result.source.index, 1);
 
     // 원하는 자리에 reorderedItem을 insert 해준다.
@@ -27,7 +27,7 @@ const Lists = React.memo(({ todoData, setTodoData, handleClick}) => {
   return (
     <div>
       <DragDropContext onDragEnd={handleEnd}>
-        <Droppable droppableId="to-do">
+        <Droppable droppableId="todo">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
               {todoData.map((data, index) => (
@@ -38,15 +38,15 @@ const Lists = React.memo(({ todoData, setTodoData, handleClick}) => {
                 >
                   {(provided, snapshot) => (
                     <List
-                    handleClick={handleClick}
-                    key={data.id}
-                    id={data.id}
-                    title={data.title}
-                    completed={data.completed}
-                    todoData={todoData}
-                    setTodoData={setTodoData}
-                    provided={provided}
-                    snapshot={snapshot}
+                      handleClick={handleClick}
+                      key={data.id}
+                      id={data.id}
+                      title={data.title}
+                      completed={data.completed}
+                      todoData={todoData}
+                      setTodoData={setTodoData}
+                      provided={provided}
+                      snapshot={snapshot}
                     />
 
                   )}

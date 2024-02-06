@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// 계속 반복되는 리랜더링을 방지함
 const List = React.memo(({
   id,
   title,
@@ -11,12 +12,13 @@ const List = React.memo(({
   handleClick
 }) => {
 
-
+  // 수정을 하는 기능
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(title);
 
+  // 체크박스 클릭했을때 선 그어지는 부분
   const handleCompleChange = (id) => {
-    let newTodoData = todoData.map((data) => {
+    let newTodoData = todoData.map((data) => { // 맵을 통해 데이터의 id값을 비교해서 완료 여부를 적용함
       if (data.id === id) {
         data.completed = !data.completed;
       }
@@ -25,23 +27,25 @@ const List = React.memo(({
     setTodoData(newTodoData);
   }
 
+  // 수정하기 버튼을 클릭했을때 값을 변경하는 효과를 가지고 있다.
   const handleEditChange = (e) => {
     setEditedTitle(e.target.value);
   }
 
-  // 저장하기 부분
+  // 저장하기 부분 (save 클릭했을때)
   const handleSubmit = (e) => {
 
     e.preventDefault();
 
+    // 맵을 통해서 데이터의 내용이 같으면 새로운 데이터를 setTodoData에 반영시킨다.
     let newTodoData = todoData.map(data => {
-      if(data.id === id) {
+      if (data.id === id) {
         data.title = editedTitle;
       }
       return data;
     });
     setTodoData(newTodoData);
-    setIsEditing(false);
+    setIsEditing(false); // 수정하기 종료된다.
   };
 
   if (isEditing) {
@@ -52,11 +56,11 @@ const List = React.memo(({
 
         <div className="item-center">
           <form onSubmit={handleSubmit}>
-          <input
-            value={editedTitle}
-            onChange={handleEditChange}
-            className='w-full px-3 py-2 mr-4 text-gray-500 rounded'
-          />
+            <input
+              value={editedTitle}
+              onChange={handleEditChange}
+              className='w-full px-3 py-2 mr-4 text-gray-500 rounded'
+            />
           </form>
 
         </div>
