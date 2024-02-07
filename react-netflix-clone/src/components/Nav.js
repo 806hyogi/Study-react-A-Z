@@ -28,7 +28,7 @@ export default function Nav() {
     <nav className={`nav ${show && "nav__black"}`}> 
       <img
         alt='넷플릭스 로고'
-        src='https://w7.pngwing.com/pngs/280/326/png-transparent-logo-netflix-logos-and-brands-icon-thumbnail.png'
+        src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/170px-Netflix_2015_logo.svg.png'
         className='nav__logo'
         onClick={() => window.location.reload()} // 클릭시 처음화면으로 리로드
       />
