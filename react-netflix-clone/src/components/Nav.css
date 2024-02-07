@@ -21,8 +21,8 @@
 .nav__logo{
   position: fixed;
   left: 40px;
-  top: 5px;
-  width: 80px;
+  top: 15px;
+  width: 150px;
   object-fit: contain;
 }
 
