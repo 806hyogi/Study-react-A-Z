@@ -3,7 +3,7 @@ import requests from './api/request';
 import Banner from './components/Banner';
 import Nav from './components/Nav';
 import Row from './components/Row';
-
+import Footer from './components/Footer';
 const App = () => {
   return (
     <div className="App">
@@ -21,6 +21,7 @@ const App = () => {
       <Row title="Top Rated" id="TR" fetchUrl={requests.fetchTopRated} />
       <Row title="Action Movies" id="AM" fetchUrl={requests.fetchActionMovies} />
       <Row title="Comedy Movies" id="TR" fetchUrl={requests.fetchComedyMovies} />
+      <Footer />
     </div>
   );
 }
