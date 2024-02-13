@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './MovieModal.css';
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 function MovieModal({
   backdrop_path,
@@ -11,11 +12,17 @@ function MovieModal({
   vote_average,
   setModalOpen,
 }) {
+
+  const ref = useRef(); // 바깥쪽을 클릭해도 모달이 닫히도록 사용
+  useOnClickOutside(ref, () => {
+    setModalOpen(false);
+  });
+
   const base_url = 'https://image.tmdb.org/t/p/original/'
   return (
     <div className='presentation' role='presentation'>
       <div className='wrapper-modal'>
-        <div className='modal'>
+        <div className='modal' ref={ref}>
           <span
             onClick={() => setModalOpen(false)}
             className='modal-close'

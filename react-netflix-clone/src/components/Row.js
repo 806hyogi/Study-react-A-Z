@@ -3,6 +3,8 @@ import axios from '../api/axios';
 import './Row.css';
 import MovieModal from './MovieModal';
 
+
+
 export default function Row({ title, fetchUrl, isLargeRow, id }) {
 
   const [movies, setMovies] = useState([]);
